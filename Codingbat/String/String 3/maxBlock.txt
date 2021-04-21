@@ -1,0 +1,29 @@
+/*
+Given a string, return the length of the largest "block" in the string. A block is a run of adjacent chars that are the same.
+
+
+maxBlock("hoopla") → 2
+maxBlock("abbCCCddBBBxx") → 3
+maxBlock("") → 0
+*/
+
+public int maxBlock(String str) {
+  int repeat = 0;
+  int result = 0;
+  
+  for(int i = 0 ; i < str.length() ; i++) {
+    for(int j = i ; j < str.length() ; j++) {
+      if(str.charAt(i) == str.charAt(j)) {
+        repeat++;
+      }
+      else {
+        break;
+      }
+    }
+    if(result < repeat) {
+      result = repeat;
+    }
+    repeat = 0;
+  }
+  return result;
+}
