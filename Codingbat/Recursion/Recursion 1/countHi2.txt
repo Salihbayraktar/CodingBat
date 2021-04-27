@@ -1,0 +1,23 @@
+/*
+
+Given a string, compute recursively the number of times lowercase "hi" appears in the string, however do not count "hi" that have an 'x' immedately before them.
+
+
+countHi2("ahixhi") → 1
+countHi2("ahibhi") → 2
+countHi2("xhixhi") → 0
+*/
+
+public int countHi2(String str) {
+  //3 karakteri say tersten yap son iki kalanı hi mı diye kontrol et
+  if(str.length() == 2){
+    if(str.charAt(0) == 'h' && str.charAt(1) == 'i') return 1;
+    else return 0;
+  }
+  if(str.length() < 2 ) return 0;
+  
+  if(str.charAt(str.length()-1) == 'i' && str.charAt(str.length()-2) == 'h' && str.charAt(str.length()-3) != 'x'){
+  return 1 + countHi2(str.substring(0,str.length()-2)); 
+  }
+  else return countHi2(str.substring(0,str.length()-1));
+}
